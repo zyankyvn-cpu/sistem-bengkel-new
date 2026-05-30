@@ -42,6 +42,7 @@ class KendaraanController extends Controller
             'tahun_kendaraan'  => 'required|digits:4|integer|min:1990|max:' . date('Y'),
             'warna'            => 'required|string|max:30',
             'catatan'          => 'nullable|string',
+            'email_pemilik' => 'nullable|email|max:100',
         ], [
             'plat_nomor.unique'    => 'Plat nomor sudah terdaftar.',
             'tahun_kendaraan.min'  => 'Tahun minimal 1990.',
@@ -77,6 +78,7 @@ class KendaraanController extends Controller
             'tahun_kendaraan'  => 'required|digits:4|integer|min:1990|max:' . date('Y'),
             'warna'            => 'required|string|max:30',
             'catatan'          => 'nullable|string',
+            'email_pemilik' => 'nullable|email|max:100',
         ]);
 
         $kendaraan->update($request->all());

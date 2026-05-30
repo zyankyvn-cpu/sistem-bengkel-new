@@ -42,6 +42,12 @@
                             value="{{ old('nama_pemilik') }}" placeholder="Nama lengkap pemilik">
                         @error('nama_pemilik') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email Pemilik</label>
+                        <input type="email" name="email_pemilik" class="form-control" 
+                            value="{{ old('email_pemilik', $kendaraan->email_pemilik ?? '') }}"
+                            placeholder="contoh@email.com">
+                    </div>
                     <div class="col-md-6">
                         <label class="form-label fw-semibold">No. Telepon <span class="text-danger">*</span></label>
                         <input type="text" name="no_telepon" class="form-control @error('no_telepon') is-invalid @enderror"

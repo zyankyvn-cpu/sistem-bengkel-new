@@ -6,6 +6,8 @@ use App\Models\Servis;
 use App\Models\Kendaraan;
 use App\Models\Mekanik;
 use Illuminate\Http\Request;
+use App\Mail\ServisSelesaiMail;
+use Illuminate\Support\Facades\Mail;
 
 class ServisController extends Controller
 {
@@ -97,9 +99,16 @@ class ServisController extends Controller
 
         $servis->update($request->all());
 
+        // Kirim email kalau status jadi Selesai
+        if ($servis->status === 'Selesai' && $servis->kendaraan->email_pemilik) {
+            Mail::to($servis->kendaraan->email_pemilik)
+                ->send(new ServisSelesaiMail($servis));
+        }
+
         return redirect()->route('servis.index')
             ->with('sukses', 'Data servis berhasil diperbarui!');
-    }
+     }
+    
 
     public function destroy(Servis $servis)
     {

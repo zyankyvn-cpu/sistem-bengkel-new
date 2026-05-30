@@ -14,6 +14,7 @@ class Kendaraan extends Model
     protected $fillable = [
         'plat_nomor',
         'nama_pemilik',
+        'email_pemilik',
         'no_telepon',
         'jenis_kendaraan',
         'merk',
